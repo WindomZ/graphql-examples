@@ -11,7 +11,6 @@ import (
 )
 
 func executeQuery(query string, schema graphql.Schema) (*graphql.Result, error) {
-	println("query:", query)
 	result := graphql.Do(graphql.Params{
 		Schema:        schema,
 		RequestString: query,
@@ -24,7 +23,7 @@ func executeQuery(query string, schema graphql.Schema) (*graphql.Result, error) 
 
 func main() {
 	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-		result, err := executeQuery(r.URL.Query()["query"][0], graphql_examples.HelloSchema)
+		result, err := executeQuery(r.URL.Query().Get("query"), graphql_examples.HelloSchema)
 		if err != nil {
 			panic(err)
 		}
@@ -33,7 +32,7 @@ func main() {
 	})
 
 	http.HandleFunc("/user", func(w http.ResponseWriter, r *http.Request) {
-		result, err := executeQuery(r.URL.Query()["query"][0], graphql_examples.UserSchema)
+		result, err := executeQuery(r.URL.Query().Get("query"), graphql_examples.UserSchema)
 		if err != nil {
 			panic(err)
 		}
