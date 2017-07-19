@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/WindomZ/graphql-examples/go/schema"
+	schema "github.com/WindomZ/graphql-examples/go/schema"
 	"github.com/graphql-go/graphql"
 )
 
@@ -23,7 +23,7 @@ func executeQuery(query string, schema graphql.Schema) (*graphql.Result, error) 
 
 func main() {
 	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-		result, err := executeQuery(r.URL.Query().Get("query"), graphql_examples.HelloSchema)
+		result, err := executeQuery(r.URL.Query().Get("query"), schema.HelloSchema)
 		if err != nil {
 			panic(err)
 		}
@@ -32,7 +32,7 @@ func main() {
 	})
 
 	http.HandleFunc("/user", func(w http.ResponseWriter, r *http.Request) {
-		result, err := executeQuery(r.URL.Query().Get("query"), graphql_examples.UserSchema)
+		result, err := executeQuery(r.URL.Query().Get("query"), schema.UserSchema)
 		if err != nil {
 			panic(err)
 		}
