@@ -13,9 +13,9 @@ use GraphQL\GraphQL;
 
 try {
     $queryType = new ObjectType([
-        'name' => 'Query',
+        'name' => 'Hello',
         'fields' => [
-            'echo' => [
+            'hello' => [
                 'type' => Type::string(),
                 'args' => [
                     'message' => ['type' => Type::string()],
@@ -48,10 +48,16 @@ try {
         'mutation' => $mutationType,
     ]);
 
-    $rawInput = file_get_contents('php://input');
-    $input = json_decode($rawInput, true);
-    $query = $input['query'];
-    $variableValues = isset($input['variables']) ? $input['variables'] : null;
+    // Parse incoming query and variables
+    if (isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false) {
+        $raw = file_get_contents('php://input') ?: '';
+        $data = json_decode($raw, true);
+    } else {
+        $data = $_REQUEST;
+    }
+    $data += ['query' => null, 'variables' => null];
+    $query = $data['query'];
+    $variableValues = isset($data['variables']) ? $data['variables'] : null;
 
     $rootValue = ['prefix' => 'You said: '];
     $result = GraphQL::execute($schema, $query, $rootValue, null, $variableValues);
