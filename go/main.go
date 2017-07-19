@@ -40,6 +40,6 @@ func main() {
 		json.NewEncoder(w).Encode(result)
 	})
 
-	fmt.Println("Now server is running on port 3000")
-	panic(http.ListenAndServe(":3000", nil))
+	fmt.Println("Now server is running on port 8080")
+	panic(http.ListenAndServe(":8080", nil))
 }
