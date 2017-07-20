@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	schema "github.com/WindomZ/graphql-examples/go/schema"
+	field "github.com/WindomZ/graphql-examples/go/field"
 	"github.com/graphql-go/graphql"
 )
 
@@ -21,23 +21,35 @@ func executeQuery(query string, schema graphql.Schema) (*graphql.Result, error) 
 	return result, nil
 }
 
+func HandleQuery(w http.ResponseWriter, r *http.Request, schema graphql.Schema) {
+	result, err := executeQuery(r.URL.Query().Get("query"), schema)
+	if err != nil {
+		panic(err)
+	}
+
+	json.NewEncoder(w).Encode(result)
+}
+
 func main() {
-	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-		result, err := executeQuery(r.URL.Query().Get("query"), schema.HelloSchema)
-		if err != nil {
-			panic(err)
-		}
+	schema, err := graphql.NewSchema(
+		graphql.SchemaConfig{
+			Query: graphql.NewObject(
+				graphql.ObjectConfig{
+					Name: "Query",
+					Fields: graphql.Fields{
+						"hello": field.HelloField,
+						"user":  field.UserField,
+					},
+				},
+			),
+		},
+	)
+	if err != nil {
+		panic(fmt.Sprintf("failed to create new schema, error: %v", err))
+	}
 
-		json.NewEncoder(w).Encode(result)
-	})
-
-	http.HandleFunc("/user", func(w http.ResponseWriter, r *http.Request) {
-		result, err := executeQuery(r.URL.Query().Get("query"), schema.UserSchema)
-		if err != nil {
-			panic(err)
-		}
-
-		json.NewEncoder(w).Encode(result)
+	http.HandleFunc("/example", func(w http.ResponseWriter, r *http.Request) {
+		HandleQuery(w, r, schema)
 	})
 
 	fmt.Println("Now server is running on port 8080")
