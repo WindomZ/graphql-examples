@@ -3,49 +3,28 @@
  * User: WindomZ
  * Date: 17-7-19
  */
-
+require_once __DIR__ . '/field/hello.php';
+require_once __DIR__ . '/field/calc.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use GraphQL\Type\Definition\ObjectType;
-use GraphQL\Type\Definition\Type;
 use GraphQL\Schema;
 use GraphQL\GraphQL;
 
 try {
-    $queryType = new ObjectType([
-        'name' => 'Hello',
-        'fields' => [
-            'hello' => [
-                'type' => Type::string(),
-                'args' => [
-                    'message' => ['type' => Type::string()],
-                ],
-                'resolve' => function ($root, $args) {
-                    return $root['prefix'].$args['message'];
-                }
-            ],
-        ],
-    ]);
-
-    $mutationType = new ObjectType([
-        'name' => 'Calc',
-        'fields' => [
-            'sum' => [
-                'type' => Type::int(),
-                'args' => [
-                    'x' => ['type' => Type::int()],
-                    'y' => ['type' => Type::int()],
-                ],
-                'resolve' => function ($root, $args) {
-                    return $args['x'] + $args['y'];
-                },
-            ],
-        ],
-    ]);
-
     $schema = new Schema([
-        'query' => $queryType,
-        'mutation' => $mutationType,
+        'query' => new ObjectType([
+            'name' => 'Query',
+            'fields' => [
+                'hello' => GraphQLExamples\getHelloField(),
+            ],
+        ]),
+        'mutation' => new ObjectType([
+            'name' => 'Calc',
+            'fields' => [
+                'sum' => GraphQLExamples\getSumField(),
+            ],
+        ]),
     ]);
 
     // Parse incoming query and variables
