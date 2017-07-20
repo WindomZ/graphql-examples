@@ -26,7 +26,7 @@ func executeQuery(query string, schema graphql.Schema) (*graphql.Result, error) 
 }
 
 func handleQuery(w http.ResponseWriter, r *http.Request, schema graphql.Schema) {
-	result, err := executeQuery(r.URL.Query().Get("graphql"), schema)
+	result, err := executeQuery(r.URL.Query().Get("query"), schema)
 	if err != nil {
 		panic(err)
 	}
@@ -35,7 +35,7 @@ func handleQuery(w http.ResponseWriter, r *http.Request, schema graphql.Schema) 
 }
 
 func main() {
-	http.HandleFunc("/example", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/graphql", func(w http.ResponseWriter, r *http.Request) {
 		handleQuery(w, r, schema.ExampleSchema)
 	})
 
