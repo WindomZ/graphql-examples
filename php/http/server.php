@@ -19,8 +19,8 @@ try {
     } else {
         $data = $_REQUEST;
     }
-    $data += ['graphql' => null, 'variables' => null];
-    $query = $data['graphql'];
+    $data += ['query' => null, 'variables' => null];
+    $query = $data['query'];
     $variableValues = isset($data['variables']) ? $data['variables'] : null;
 
     $rootValue = [
