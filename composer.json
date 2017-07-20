@@ -20,5 +20,21 @@
             "name": "WindomZ",
             "email": "git.windomz@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "GraphQLExamples\\Schema\\": "php/graphql/",
+            "GraphQLExamples\\Field\\": "php/graphql/field/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GraphQLExamples\\Tests\\": "php/tests/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit php/tests/"
+        ]
+    }
 }
