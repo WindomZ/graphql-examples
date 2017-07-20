@@ -18,7 +18,16 @@ func init() {
 					Name: "Query",
 					Fields: graphql.Fields{
 						"hello": field.HelloField,
+						"bye":   field.ByeField,
 						"user":  field.UserField,
+					},
+				},
+			),
+			Mutation: graphql.NewObject(
+				graphql.ObjectConfig{
+					Name: "Calc",
+					Fields: graphql.Fields{
+						"sum": field.SumField,
 					},
 				},
 			),
