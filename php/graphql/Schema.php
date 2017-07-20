@@ -6,9 +6,9 @@
 
 namespace GraphQLExamples\Schema;
 
-require_once __DIR__ . '/../graphql/field/hello.php';
-require_once __DIR__ . '/../graphql/field/calc.php';
-require_once __DIR__ . '/../graphql/field/user.php';
+require_once __DIR__ . '/../graphql/field/Hello.php';
+require_once __DIR__ . '/../graphql/field/Calc.php';
+require_once __DIR__ . '/../graphql/field/User.php';
 
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Schema;

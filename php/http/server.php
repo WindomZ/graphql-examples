@@ -5,7 +5,7 @@
  */
 
 require_once __DIR__ . '/../../vendor/autoload.php';
-require_once __DIR__ . '/../graphql/schema.php';
+require_once __DIR__ . '/../graphql/Schema.php';
 
 use GraphQL\GraphQL;
 use GraphQLExamples\Schema;
