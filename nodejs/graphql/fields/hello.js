@@ -3,15 +3,18 @@
  */
 'use strict';
 
-const { GraphQLString } = require('graphql');
+const {GraphQLString} = require('graphql');
 
 // Construct a fields
 const fields = {
   hello: {
     type: GraphQLString,
-    resolve() {
-      return 'Hello world!';
+    args: {
+      message: {
+        type: GraphQLString,
+      },
     },
+    resolve: (root, {message}) => 'Hello ' + message + '!',
   },
   bye: {
     type: GraphQLString,
@@ -21,11 +24,11 @@ const fields = {
 // The root provides a resolver function for each API endpoint
 const root = {
   hello: () => {
-    return 'Should be replaced by schema..hello.resolve()!';
+    return 'Should not be displayed!';
   },
   bye: () => {
     return 'Goodbye!';
   },
 };
 
-module.exports = { fields, root };
+module.exports = {fields, root};
