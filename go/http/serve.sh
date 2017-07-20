@@ -2,6 +2,7 @@
 # How to test
 echo "Test hello.go"
 echo -e ">>> \033[1mhttp://localhost:8080/example?graphql=query{hello(message:\"World\")}\033[0m\n"
+echo -e ">>> \033[1mhttp://localhost:8080/example?graphql=query{bye}\033[0m\n"
 
 echo "Test calc.go"
 echo -e ">>> \033[1mhttp://localhost:8080/example?graphql=mutation{sum(x:1,y:2)}\033[0m\n"
