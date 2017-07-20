@@ -4,7 +4,7 @@
  * Date: 17-7-20
  */
 
-namespace GraphQLExamples;
+namespace GraphQLExamples\Field;
 
 use GraphQL\Type\Definition\Type;
 

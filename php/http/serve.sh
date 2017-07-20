@@ -4,5 +4,5 @@ echo -e "Test with GET: \033[1mhttp://localhost:8080/?query=query{hello(message:
 echo -e "Test with GET: \033[1mhttp://localhost:8080/?query=mutation{sum(x:2,y:2)}\033[0m"
 echo ""
 
-# Run go example server on port 8080.
-php -S localhost:8080 serve.php
+# Run PHP example server on port 8080.
+php -S localhost:8080 server.php
