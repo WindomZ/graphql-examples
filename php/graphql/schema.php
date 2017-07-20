@@ -20,6 +20,7 @@ function getSchema()
             'name' => 'Query',
             'fields' => [
                 'hello' => Field\getHelloField(),
+                'bye' => Field\getByeField(),
             ],
         ]),
         'mutation' => new ObjectType([

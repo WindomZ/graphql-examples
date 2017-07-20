@@ -22,7 +22,10 @@ try {
     $query = $data['query'];
     $variableValues = isset($data['variables']) ? $data['variables'] : null;
 
-    $rootValue = ['prefix' => 'You said: '];
+    $rootValue = [
+        'hello' => 'Should not be displayed!',
+        'bye' => 'Goodbye!',
+    ];
     $result = GraphQL::execute(Schema\getSchema(), $query, $rootValue, null, $variableValues);
 } catch (\Exception $e) {
     $result = [

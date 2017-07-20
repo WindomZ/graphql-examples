@@ -16,7 +16,17 @@ function getHelloField()
             'message' => ['type' => Type::string()],
         ],
         'resolve' => function ($root, $args) {
-            return $root['prefix'] . $args['message'];
+            return 'Hello ' . $args['message'] . '!';
         }
+    ];
+}
+
+function getByeField()
+{
+    return [
+        'type' => Type::string(),
+//        'resolve' => function ($root, $args) {
+//            return $root['bye'];
+//        }
     ];
 }
