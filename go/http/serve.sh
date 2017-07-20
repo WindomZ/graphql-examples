@@ -9,4 +9,4 @@ echo -e "Test with GET: \033[1mhttp://localhost:8080/example?query={user(id:\"ç¼
 echo ""
 
 # Run go example server on port 8080.
-go run main.go
+go run server.go
