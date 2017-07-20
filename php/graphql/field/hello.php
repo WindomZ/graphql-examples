@@ -8,25 +8,29 @@ namespace GraphQLExamples\Field;
 
 use GraphQL\Type\Definition\Type;
 
-function getHelloField()
+class Hello
 {
-    return [
-        'type' => Type::string(),
-        'args' => [
-            'message' => ['type' => Type::string()],
-        ],
-        'resolve' => function ($root, $args) {
-            return 'Hello ' . $args['message'] . '!';
-        }
-    ];
-}
+    public static function getHelloField()
+    {
+        return [
+            'type' => Type::string(),
+            'args' => [
+                'message' => ['type' => Type::string()],
+            ],
+            'resolve' => function ($root, $args) {
+                return 'Hello ' . $args['message'] . '!';
+            }
+        ];
+    }
 
-function getByeField()
-{
-    return [
-        'type' => Type::string(),
+    public static function getByeField()
+    {
+        return [
+            'type' => Type::string(),
 //        'resolve' => function ($root, $args) {
 //            return $root['bye'];
 //        }
-    ];
+        ];
+    }
 }
+

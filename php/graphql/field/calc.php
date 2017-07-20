@@ -8,16 +8,21 @@ namespace GraphQLExamples\Field;
 
 use GraphQL\Type\Definition\Type;
 
-function getSumField()
+class Calc
 {
-    return [
-        'type' => Type::int(),
-        'args' => [
-            'x' => ['type' => Type::int()],
-            'y' => ['type' => Type::int()],
-        ],
-        'resolve' => function ($root, $args) {
-            return $args['x'] + $args['y'];
-        },
-    ];
+    public static function getSumField()
+    {
+        return [
+            'name' => 'sum',
+            'type' => Type::int(),
+            'args' => [
+                'x' => ['type' => Type::int()],
+                'y' => ['type' => Type::int()],
+            ],
+            'resolve' => function ($root, $args) {
+                return $args['x'] + $args['y'];
+            },
+        ];
+    }
 }
+

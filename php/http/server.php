@@ -18,8 +18,8 @@ try {
     } else {
         $data = $_REQUEST;
     }
-    $data += ['query' => null, 'variables' => null];
-    $query = $data['query'];
+    $data += ['graphql' => null, 'variables' => null];
+    $query = $data['graphql'];
     $variableValues = isset($data['variables']) ? $data['variables'] : null;
 
     $rootValue = [
@@ -35,4 +35,4 @@ try {
     ];
 }
 header('Content-Type: application/json; charset=UTF-8');
-echo json_encode($result);
+echo json_encode($result, JSON_UNESCAPED_UNICODE);

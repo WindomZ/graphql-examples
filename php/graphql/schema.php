@@ -8,6 +8,7 @@ namespace GraphQLExamples\Schema;
 
 require_once __DIR__ . '/../graphql/field/hello.php';
 require_once __DIR__ . '/../graphql/field/calc.php';
+require_once __DIR__ . '/../graphql/field/user.php';
 
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Schema;
@@ -19,14 +20,15 @@ function getSchema()
         'query' => new ObjectType([
             'name' => 'Query',
             'fields' => [
-                'hello' => Field\getHelloField(),
-                'bye' => Field\getByeField(),
+                'hello' => Field\Hello::getHelloField(),
+                'bye' => Field\Hello::getByeField(),
+                'user' => Field\User::getUserField(),
             ],
         ]),
         'mutation' => new ObjectType([
             'name' => 'Calc',
             'fields' => [
-                'sum' => Field\getSumField(),
+                'sum' => Field\Calc::getSumField(),
             ],
         ]),
     ]);
