@@ -5,14 +5,15 @@
  */
 
 require_once __DIR__ . '/../../vendor/autoload.php';
-require_once __DIR__ . '/../graphql/schema.php';
+require_once __DIR__ . '/../graphql/Schema.php';
 
 use GraphQL\GraphQL;
 use GraphQLExamples\Schema;
 
 try {
     // Parse incoming query and variables
-    if (isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false) {
+    if (isset($_SERVER['CONTENT_TYPE'])
+        && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false) {
         $raw = file_get_contents('php://input') ?: '';
         $data = json_decode($raw, true);
     } else {
@@ -26,7 +27,8 @@ try {
         'hello' => 'Should not be displayed!',
         'bye' => 'Goodbye!',
     ];
-    $result = GraphQL::execute(Schema\getSchema(), $query, $rootValue, null, $variableValues);
+    $result = GraphQL::execute(Schema\getSchema(), $query,
+        $rootValue, null, $variableValues);
 } catch (\Exception $e) {
     $result = [
         'error' => [
