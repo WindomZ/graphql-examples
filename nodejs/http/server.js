@@ -16,7 +16,7 @@ app.use(
     schema: Schema,
     rootValue: RootValue,
     graphiql: false,
-    pretty: true,
+    pretty: false,
   })
 );
 

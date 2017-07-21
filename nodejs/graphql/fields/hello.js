@@ -3,7 +3,7 @@
  */
 'use strict';
 
-const {GraphQLString} = require('graphql');
+const { GraphQLString } = require('graphql');
 
 // Construct a fields
 const fields = {
@@ -14,7 +14,7 @@ const fields = {
         type: GraphQLString,
       },
     },
-    resolve: (root, {message}) => 'Hello ' + message + '!',
+    resolve: (root, { message }) => 'Hello ' + message + '!',
   },
   bye: {
     type: GraphQLString,
@@ -31,4 +31,4 @@ const root = {
   },
 };
 
-module.exports = {fields, root};
+module.exports = { fields, root };
