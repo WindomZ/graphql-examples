@@ -35,3 +35,36 @@ test.serial('http server calc pass', async t => {
     })
     .catch(error => t.fail(error));
 });
+
+test.serial('http server user pass', async t => {
+  await axios
+    .get('http://localhost:8080/graphql?query=query{user(id:"1"){name}}')
+    .then(response => {
+      t.is(
+        JSON.stringify(response.data),
+        '{"data":{"user":{"name":"+86-13888888888"}}}'
+      );
+      t.pass();
+    })
+    .catch(error => t.fail(error));
+
+  await axios
+    .get('http://localhost:8080/graphql?query=query{user(id:"id"){name}}')
+    .then(response => {
+      t.is(JSON.stringify(response.data), '{"data":{"user":{"name":"Name"}}}');
+      t.pass();
+    })
+    .catch(error => t.fail(error));
+
+  await axios
+    .get(
+      'http://localhost:8080/graphql?query=query{user(id:"' +
+        encodeURIComponent('编号') +
+        '"){name}}'
+    )
+    .then(response => {
+      t.is(JSON.stringify(response.data), '{"data":{"user":{"name":"名字"}}}');
+      t.pass();
+    })
+    .catch(error => t.fail(error));
+});

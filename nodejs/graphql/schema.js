@@ -8,11 +8,12 @@ const { GraphQLSchema, GraphQLObjectType } = require('graphql');
 
 const { fields: HelloFields, root: HelloRoot } = require('./fields/hello');
 const { fields: CalcFields, root: CalcRoot } = require('./fields/calc');
+const { fields: UserFields, root: UserRoot } = require('./fields/user');
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'RootQueryType',
-    fields: _.assignIn({}, HelloFields),
+    fields: _.assignIn({}, HelloFields, UserFields),
   }),
   mutation: new GraphQLObjectType({
     name: 'RootMutationType',
@@ -20,6 +21,6 @@ const schema = new GraphQLSchema({
   }),
 });
 
-const root = _.assignIn({}, HelloRoot, CalcRoot);
+const root = _.assignIn({}, HelloRoot, CalcRoot, UserRoot);
 
 module.exports = { schema, root };
