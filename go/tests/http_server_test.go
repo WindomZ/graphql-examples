@@ -20,7 +20,7 @@ func get(uri string) ([]byte, error) {
 }
 
 func post(uri string, data interface{}) ([]byte, error) {
-	resp, err := client.Post(uri, data)
+	resp, err := client.PostJSON(uri, data)
 	if err != nil {
 		return nil, err
 	}
@@ -60,12 +60,11 @@ func TestHttp_Bye(t *testing.T) {
 }
 
 func TestHttp_Sum(t *testing.T) {
-	query := &struct {
+	b, err := post("http://localhost:8080/graphql", &struct {
 		Query string `json:"query"`
 	}{
 		Query: "mutation{sum(x:1,y:2)}",
-	}
-	b, err := post("http://localhost:8080/graphql", query)
+	})
 	if err != nil {
 		t.Fatal(err)
 	}
