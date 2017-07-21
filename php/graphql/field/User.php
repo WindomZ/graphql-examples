@@ -27,7 +27,7 @@ class User
     private static function getData()
     {
         return self::$data ?: (self::$data = [
-            '1' => new User('1', 'Name-1'),
+            '1' => new User('1', '+86-13888888888'),
             'id' => new User('id', 'Name'),
             '编号' => new User('编号', '名字'),
         ]);

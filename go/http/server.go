@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 
 	schema "github.com/WindomZ/graphql-examples/go/graphql"
@@ -26,7 +27,27 @@ func executeQuery(query string, schema graphql.Schema) (*graphql.Result, error) 
 }
 
 func handleQuery(w http.ResponseWriter, r *http.Request, schema graphql.Schema) {
-	result, err := executeQuery(r.URL.Query().Get("graphql"), schema)
+	var query string
+	switch r.Method {
+	case http.MethodPost:
+		data, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			panic(err)
+		}
+		defer r.Body.Close()
+
+		obj := &struct {
+			Query string `json:"query"`
+		}{}
+		if err = json.Unmarshal(data, obj); err != nil {
+			panic(err)
+		}
+		query = obj.Query
+	default:
+		query = r.URL.Query().Get("query")
+	}
+
+	result, err := executeQuery(query, schema)
 	if err != nil {
 		panic(err)
 	}
@@ -35,7 +56,7 @@ func handleQuery(w http.ResponseWriter, r *http.Request, schema graphql.Schema) 
 }
 
 func main() {
-	http.HandleFunc("/example", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/graphql", func(w http.ResponseWriter, r *http.Request) {
 		handleQuery(w, r, schema.ExampleSchema)
 	})
 

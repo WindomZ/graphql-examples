@@ -11,39 +11,57 @@ class HttpServerTest extends \PHPUnit_Framework_TestCase
     public function testHttpHello()
     {
         self::assertEquals(
-            file_get_contents("http://localhost:8080/example?graphql=query{hello(message:\"World\")}"),
+            trim(file_get_contents("http://localhost:8080/graphql?query=query{hello(message:\"World\")}")),
             '{"data":{"hello":"Hello World!"}}'
         );
 
         self::assertEquals(
-            file_get_contents("http://localhost:8080/example?graphql=query{bye}"),
+            trim(file_get_contents("http://localhost:8080/graphql?query=query{bye}")),
             '{"data":{"bye":"Goodbye!"}}'
         );
     }
 
     public function testHttpCalc()
     {
-        self::assertEquals(
-            file_get_contents("http://localhost:8080/example?graphql=mutation{sum(x:1,y:2)}"),
-            '{"data":{"sum":3}}'
-        );
+        try {
+            $url = 'http://localhost:8080/graphql';
+            $data = array('query' => 'mutation{sum(x:1,y:2)}');
+            $options = array(
+                'http' => array(
+                    'header' => "Content-type: application/json",
+                    'method' => 'POST',
+                    'content' => json_encode($data)
+                )
+            );
+            $context = stream_context_create($options);
+            $response = trim(file_get_contents($url, false, $context));
+
+            self::assertEquals(
+                $response,
+                '{"data":{"sum":3}}'
+            );
+        } catch (\Throwable $t) {
+            self::assertEmpty($t);
+        } catch (\Exception $e) {
+            self::assertEmpty($e);
+        }
     }
 
     public function testHttpUser()
     {
         self::assertEquals(
-            file_get_contents("http://localhost:8080/example?graphql=query{user(id:\"1\"){name}}"),
-            '{"data":{"user":{"name":"Name-1"}}}'
+            trim(file_get_contents("http://localhost:8080/graphql?query=query{user(id:\"1\"){name}}")),
+            '{"data":{"user":{"name":"+86-13888888888"}}}'
         );
 
         self::assertEquals(
-            file_get_contents("http://localhost:8080/example?graphql=query{user(id:\"id\"){name}}"),
+            trim(file_get_contents("http://localhost:8080/graphql?query=query{user(id:\"id\"){name}}")),
             '{"data":{"user":{"name":"Name"}}}'
         );
 
         $chinese = urlencode("\"编号\"");
         self::assertEquals(
-            file_get_contents("http://localhost:8080/example?graphql=query{user(id:$chinese){name}}"),
+            trim(file_get_contents("http://localhost:8080/graphql?query=query{user(id:$chinese){name}}")),
             '{"data":{"user":{"name":"名字"}}}'
         );
     }

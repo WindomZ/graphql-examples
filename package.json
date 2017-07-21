@@ -4,7 +4,7 @@
   "description": "",
   "main": "nodejs/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,9 @@
     "express-graphql": "^0.6.6",
     "graphql": "^0.10.5",
     "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "ava": "^0.21.0",
+    "axios": "^0.16.2"
   }
 }

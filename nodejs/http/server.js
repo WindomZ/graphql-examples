@@ -11,14 +11,14 @@ const { schema: Schema, root: RootValue } = require('../graphql/schema');
 let app = express();
 
 app.use(
-  '/example',
+  '/graphql',
   graphqlHTTP({
     schema: Schema,
     rootValue: RootValue,
     graphiql: false,
-    pretty: true,
+    pretty: false,
   })
 );
 
 app.listen(8080);
-console.log('Running a GraphQL API server at localhost:8080/example');
+console.log('Running a GraphQL API server at localhost:8080/graphql');
