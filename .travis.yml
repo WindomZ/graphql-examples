@@ -1,0 +1,38 @@
+matrix:
+  include:
+    - language: go
+      sudo: false
+      go: master
+      before_install:
+        - go get github.com/graphql-go/graphql
+        - go get github.com/WindomZ/testify/assert
+        - go get github.com/WindomZ/go-develop-kit/http
+      script:
+        - go run ./go/http/server.go &
+        - sleep 3
+        - go test -v ./...
+    - language: node_js
+      sudo: false
+      os:
+        - linux
+        - osx
+      node_js: node
+      cache:
+        yarn: true
+        directories:
+          - node_modules
+      script:
+        - node ./nodejs/http/server.js &
+        - sleep 3
+        - yarn run test
+    - language: php
+      sudo: false
+      cache:
+        directories:
+          - $HOME/.composer/cache
+      php: '7.1'
+      before_script: composer install
+      script:
+        - php -S localhost:8080 ./php/http/server.php &
+        - sleep 3
+        - composer test
