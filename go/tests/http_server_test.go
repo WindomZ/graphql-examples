@@ -19,6 +19,14 @@ func get(uri string) ([]byte, error) {
 	return http.ByteResponseBody(resp)
 }
 
+func post(uri string, data interface{}) ([]byte, error) {
+	resp, err := client.Post(uri, data)
+	if err != nil {
+		return nil, err
+	}
+	return http.ByteResponseBody(resp)
+}
+
 func TestHttp_Hello(t *testing.T) {
 	b, err := get("http://localhost:8080/graphql?query=query{hello(message:\"World\")}")
 	if err != nil {
@@ -52,7 +60,12 @@ func TestHttp_Bye(t *testing.T) {
 }
 
 func TestHttp_Sum(t *testing.T) {
-	b, err := get("http://localhost:8080/graphql?query=mutation{sum(x:1,y:2)}")
+	query := &struct {
+		Query string `json:"query"`
+	}{
+		Query: "mutation{sum(x:1,y:2)}",
+	}
+	b, err := post("http://localhost:8080/graphql", query)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -90,7 +103,7 @@ func TestHttp_User(t *testing.T) {
 	}
 
 	assert.NoError(t, json.Unmarshal(b, result))
-	assert.Equal(t, result.Data.User.Name, "Name-1")
+	assert.Equal(t, result.Data.User.Name, "+86-13888888888")
 
 	b, err = get("http://localhost:8080/graphql?query=query{user(id:\"id\"){name}}")
 	if err != nil {
