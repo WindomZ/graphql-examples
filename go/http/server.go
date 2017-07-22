@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -21,7 +20,7 @@ func executeQuery(query string, schema graphql.Schema) (*graphql.Result, error) 
 		},
 	})
 	if len(result.Errors) > 0 {
-		return nil, errors.New(fmt.Sprintf("wrong result, unexpected errors: %v", result.Errors))
+		return nil, fmt.Errorf("wrong result, unexpected errors: %v", result.Errors)
 	}
 	return result, nil
 }

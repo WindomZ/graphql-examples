@@ -1,4 +1,4 @@
-package graphql_examples
+package graphqlexamples
 
 import (
 	"encoding/json"
