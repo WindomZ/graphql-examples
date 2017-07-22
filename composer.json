@@ -1,6 +1,6 @@
 {
     "name": "windomz/graphql-examples",
-    "description": "",
+    "description": "Unified GraphQL examples written in Go, Node.js, PHP.",
     "type": "project",
     "require": {
         "php": ">=5.4",
