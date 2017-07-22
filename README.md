@@ -5,13 +5,13 @@
 [![Build Status](https://travis-ci.org/WindomZ/graphql-examples.svg?branch=master)](https://travis-ci.org/WindomZ/graphql-examples)
 [![Go Report Card](https://goreportcard.com/badge/github.com/WindomZ/graphql-examples)](https://goreportcard.com/report/github.com/WindomZ/graphql-examples)
 [![Dependency](https://david-dm.org/WindomZ/url-generator.svg)](https://david-dm.org/WindomZ/url-generator)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-brightgreen.svg)](https://github.com/prettier/prettier)
+[![styled with prettier](https://img.shields.io/badge/js_styled_with-prettier-brightgreen.svg)](https://github.com/prettier/prettier)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 ## Purpose
 
 - **Unified** GraphQL example template.
-- **Support** multiple languages: Go, Node.js, PHP.
+- **Multiple** languages: Go, Node.js, PHP.
 - **Easy** to learn primary GraphQL.
 - **Test** compatibility.
 - **HTTP** services.
@@ -92,14 +92,15 @@ mutation Calc {
 
 ## Contributing
 
-Welcome to pull requests, report bugs, suggest ideas and discuss **graphql-examples**, 
-i would love to hear what you think about **graphql-examples** on [issues page](https://github.com/WindomZ/graphql-examples/issues).
+Welcome to pull requests, report bugs, suggest ideas and discuss 
+**graphql-examples** on [issues page](https://github.com/WindomZ/graphql-examples/issues).
 
 If you like it then you can put a :star: on it.
 
 ## Todo
 
 - [ ] Star Wars example template.
+- [ ] Support Java.
 - [ ] HTTPS services.
 - [ ] RPC services.
 
