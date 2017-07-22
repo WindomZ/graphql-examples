@@ -3,6 +3,10 @@
 > Unified GraphQL examples written in Go, Node.js, PHP.
 
 [![Build Status](https://travis-ci.org/WindomZ/graphql-examples.svg?branch=master)](https://travis-ci.org/WindomZ/graphql-examples)
+[![Go Report Card](https://goreportcard.com/badge/github.com/WindomZ/graphql-examples)](https://goreportcard.com/report/github.com/WindomZ/graphql-examples)
+[![Dependency](https://david-dm.org/WindomZ/url-generator.svg)](https://david-dm.org/WindomZ/url-generator)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-brightgreen.svg)](https://github.com/prettier/prettier)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 ## Purpose
 
@@ -58,13 +62,13 @@ query Query {
     name
   }
 }
-// test english strings
+// test English
 query Query {
   user(id:"id") {
     name
   }
 }
-// test chinese strings
+// test Chinese
 query Query {
   user(id:"编号") {
     name
