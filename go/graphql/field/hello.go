@@ -6,7 +6,10 @@ import (
 	"github.com/graphql-go/graphql"
 )
 
+// HelloField define a hello query field
 var HelloField *graphql.Field
+
+// ByeField define a bye query field
 var ByeField *graphql.Field
 
 func init() {

@@ -6,6 +6,7 @@ import (
 	"github.com/graphql-go/graphql"
 )
 
+// SumField define a sum mutation field
 var SumField *graphql.Field
 
 func init() {

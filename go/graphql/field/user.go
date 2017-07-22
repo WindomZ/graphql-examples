@@ -2,6 +2,7 @@ package graphqlexamples
 
 import "github.com/graphql-go/graphql"
 
+// User define a User struct object.
 type User struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
@@ -22,6 +23,7 @@ var data map[string]User = map[string]User{
 	},
 }
 
+// UserField define a user query field.
 var UserField *graphql.Field
 
 func init() {

@@ -7,6 +7,7 @@ import (
 	"github.com/graphql-go/graphql"
 )
 
+// ExampleSchema define a schema
 var ExampleSchema graphql.Schema
 
 func init() {
