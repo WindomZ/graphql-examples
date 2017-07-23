@@ -1,5 +1,7 @@
 # graphql-examples
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/WindomZ/graphql-examples.svg)](https://greenkeeper.io/)
+
 > Unified GraphQL examples written in Go, Node.js, PHP.
 
 [![Build Status](https://travis-ci.org/WindomZ/graphql-examples.svg?branch=master)](https://travis-ci.org/WindomZ/graphql-examples)
