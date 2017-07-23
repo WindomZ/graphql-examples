@@ -1,11 +1,10 @@
 # graphql-examples
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/WindomZ/graphql-examples.svg)](https://greenkeeper.io/)
-
 > Unified GraphQL examples written in Go, Node.js, PHP.
 
 [![Build Status](https://travis-ci.org/WindomZ/graphql-examples.svg?branch=master)](https://travis-ci.org/WindomZ/graphql-examples)
 [![Go Report Card](https://goreportcard.com/badge/github.com/WindomZ/graphql-examples)](https://goreportcard.com/report/github.com/WindomZ/graphql-examples)
+[![Greenkeeper badge](https://badges.greenkeeper.io/WindomZ/graphql-examples.svg)](https://greenkeeper.io/)
 [![Dependency](https://david-dm.org/WindomZ/url-generator.svg)](https://david-dm.org/WindomZ/url-generator)
 [![styled with prettier](https://img.shields.io/badge/js_styled_with-prettier-brightgreen.svg)](https://github.com/prettier/prettier)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
@@ -17,6 +16,44 @@
 - **Easy** to learn primary GraphQL.
 - **Test** compatibility.
 - **HTTP** services.
+
+## Install
+
+### Go
+```bash
+go get github.com/WindomZ/graphql-examples/...
+```
+
+### Node.js
+```bash
+npm install
+# or
+yarn
+```
+
+### PHP
+```bash
+composer install
+```
+
+## Usage
+
+### Single
+
+Each under the `go`, `nodejs`, `php` directory paths.
+
+### Integrated
+
+If you have `Go(go get)`, `PHP(composer)`, `Node.js(npm/yarn)` installed.
+
+You can run and select service:
+```
+./run.sh
+```
+Run the test with all above languages:
+```
+./test.sh
+```
 
 ## Template
 
