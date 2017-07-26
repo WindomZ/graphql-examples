@@ -136,10 +136,17 @@ Welcome to pull requests, report bugs, suggest ideas and discuss
 
 If you like it then you can put a :star: on it.
 
-## Todo
+## Roadmap
 
-- [ ] Star Wars example template.
+- [x] Support Golang.
+- [x] Support Node.js.
+- [x] Support PHP.
 - [ ] Support Java.
+- [x] Hello & Bye example template.
+- [x] Calc(sum) example template.
+- [x] User example template.
+- [ ] Star Wars example template.
+- [x] HTTP services.
 - [ ] HTTPS services.
 - [ ] RPC services.
 
