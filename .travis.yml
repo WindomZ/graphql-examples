@@ -27,9 +27,9 @@ matrix:
         - yarn run test
     - language: php
       sudo: false
-      cache:
-        directories:
-          - $HOME/.composer/cache
+#      cache:
+#        directories:
+#          - $HOME/.composer/cache
       php: '7.1'
       before_script: composer install
       script:
