@@ -9,7 +9,7 @@ matrix:
         - go get github.com/WindomZ/go-develop-kit/http
       script:
         - go run ./go/http/server.go &
-        - sleep 3
+        - sleep 5
         - go test -v ./...
     - language: node_js
       sudo: false
@@ -23,16 +23,16 @@ matrix:
           - node_modules
       script:
         - node ./nodejs/http/server.js &
-        - sleep 3
+        - sleep 5
         - yarn run test
     - language: php
       sudo: false
-#      cache:
-#        directories:
-#          - $HOME/.composer/cache
+      cache:
+        directories:
+          - $HOME/.composer/cache
       php: '7.1'
       before_script: composer install
       script:
         - php -S localhost:8080 ./php/http/server.php &
-        - sleep 3
+        - sleep 5
         - composer test
