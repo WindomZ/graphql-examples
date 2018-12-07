@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/WindomZ/graphql-examples#readme",
   "dependencies": {
-    "express": "^4.16.3",
-    "express-graphql": "^0.6.12",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
     "lodash": "^4.17.11"
   },
