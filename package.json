@@ -27,7 +27,7 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^1.0.1",
     "axios": "^0.17.0"
   }
 }
