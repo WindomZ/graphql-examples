@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "axios": "^0.17.0"
+    "axios": "^0.19.1"
   }
 }
